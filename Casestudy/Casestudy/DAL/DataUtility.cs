@@ -1,4 +1,6 @@
 ﻿using Casestudy.DAL.DomainClasses;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 
 namespace Casestudy.DAL
@@ -82,7 +84,7 @@ namespace Casestudy.DAL
                 foreach (JsonElement element in jsonObjectArray.EnumerateArray())
                 {
                     Product item = new();
-                    item.Id = element.GetProperty("ID").GetString();
+                    item.Id = GenerateProductId(element.GetProperty("PRODUCTNAME").GetString()!, element.GetProperty("BRAND").GetString()!);
                     item.ProductName = element.GetProperty("PRODUCTNAME").GetString();
                     item.GraphicName = element.GetProperty("GRAPHICNAME").GetString();
                     item.CostPrice = Convert.ToDecimal(element.GetProperty("COST").GetString());
@@ -114,6 +116,29 @@ namespace Casestudy.DAL
             }
 
             return loadedProducts;
+        }
+
+        //Utilizes the MD5 hashing algorithm on a combined string of ProductName and BrandName.
+        //Finally, we convert the resulting hash into a 15-character ID by taking pairs of bytes,
+        //summing them, and converting the resulting value into a character.
+        private string GenerateProductId(string productName, string brandName)
+        {
+            string combinedString = $"{productName}_{brandName}";
+
+            using (var md5 = MD5.Create())
+            {
+                byte[] hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(combinedString));
+
+                StringBuilder sb = new StringBuilder(30);
+                for (int i = 0; i < 15; i++)
+                {
+                    int value = hashBytes[i] % 36;
+                    char character = (char)(value < 10 ? '0' + value : 'A' + value - 10);
+                    sb.Append(character);
+                }
+
+                return sb.ToString();
+            }
         }
     }
 }
