@@ -1,8 +1,7 @@
 [
   {
-    "ID": "3B1BFBFDC2B241F",
     "PRODUCTNAME": "Tiro Pro",
-    "GRAPHICNAME": "Soccer Ball",
+    "GRAPHICNAME": "tiroProSoccerBall.png",
     "COST": "149.99",
     "MSRP": "179.99",
     "QTYHAND": "74",
@@ -11,9 +10,8 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "BF1E7956500A430",
     "PRODUCTNAME": "Charge Soccer Shin Guard",
-    "GRAPHICNAME": "Shin Guard",
+    "GRAPHICNAME": "chargeShinGuard.png",
     "COST": "20.0",
     "MSRP": "25.99",
     "QTYHAND": "23",
@@ -22,9 +20,8 @@
     "BRAND": "Nike"
   },
   {
-    "ID": "7239F33924F3473",
     "PRODUCTNAME": "Predator Soccer Shoes",
-    "GRAPHICNAME": "Soccer Shoes",
+    "GRAPHICNAME": "predatorSoccerShoes.png",
     "COST": "89.99",
     "MSRP": "99.99",
     "QTYHAND": "47",
@@ -33,9 +30,8 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "3C13CA5A99FC4C1",
     "PRODUCTNAME": "Mercurial Zoom Superfly 9 Elite",
-    "GRAPHICNAME": "Soccer Shoes",
+    "GRAPHICNAME": "mercurialSoccerShoes.png",
     "COST": "365.0",
     "MSRP": "400.0",
     "QTYHAND": "7",
@@ -44,9 +40,8 @@
     "BRAND": "Nike"
   },
   {
-    "ID": "5B7C5CD5A398427",
     "PRODUCTNAME": "Zoom Superfly 9 Academy",
-    "GRAPHICNAME": "Soccer Shoes",
+    "GRAPHICNAME": "zoomSoccerShoes.png",
     "COST": "125.0",
     "MSRP": "150.0",
     "QTYHAND": "17",
@@ -55,9 +50,8 @@
     "BRAND": "Nike"
   },
   {
-    "ID": "B28D01FF4A43473",
     "PRODUCTNAME": "MLS League Senior Soccer Ball",
-    "GRAPHICNAME": "Soccer Ball",
+    "GRAPHICNAME": "mlsSoccerBall.png",
     "COST": "54.99",
     "MSRP": "69.99",
     "QTYHAND": "32",
@@ -66,9 +60,8 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "F1B571CB1AF241D",
     "PRODUCTNAME": "Predator Pro Senior Gloves",
-    "GRAPHICNAME": "Soccer Gloves",
+    "GRAPHICNAME": "predatorSoccerGloves.png",
     "COST": "179.99",
     "MSRP": "199.99",
     "QTYHAND": "46",
@@ -77,9 +70,8 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "3F2930ECA2A3424",
     "PRODUCTNAME": "Match Senior Goalie Gloves",
-    "GRAPHICNAME": "Soccer Gloves",
+    "GRAPHICNAME": "matchSoccerGloves.png",
     "COST": "29.99",
     "MSRP": "39.99",
     "QTYHAND": "13",
@@ -88,9 +80,8 @@
     "BRAND": "Lotto"
   },
   {
-    "ID": "43288C0E48EB43A",
     "PRODUCTNAME": "Manchester City 2022/23 PUMA Replica Jersey",
-    "GRAPHICNAME": "Soccer Jersey",
+    "GRAPHICNAME": "manchesterJersey.png",
     "COST": "109.99",
     "MSRP": "129.99",
     "QTYHAND": "21",
@@ -99,9 +90,8 @@
     "BRAND": "Puma"
   },
   {
-    "ID": "94595742B8C74BA",
     "PRODUCTNAME": "Barcelona 2022/23 Nike Youth Replica Jersey",
-    "GRAPHICNAME": "Soccer Jersey",
+    "GRAPHICNAME": "barcelonaJersey.png",
     "COST": "90.0",
     "MSRP": "99.99",
     "QTYHAND": "15",
@@ -110,9 +100,8 @@
     "BRAND": "Nike"
   },
   {
-    "ID": "BBB5499D4A53453",
     "PRODUCTNAME": "Bayern Munich adidas Men's Replica Jersey",
-    "GRAPHICNAME": "Soccer Jersey",
+    "GRAPHICNAME": "bayernMunichJersey.png",
     "COST": "109.99",
     "MSRP": "119.99",
     "QTYHAND": "19",
@@ -121,9 +110,8 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "133713ECF1414CD",
     "PRODUCTNAME": "Liverpool FC 2022/23 Nike Men's Replica Jersey",
-    "GRAPHICNAME": "Soccer Jersey",
+    "GRAPHICNAME": "liverpoolJersey.png",
     "COST": "115.0",
     "MSRP": "149.99",
     "QTYHAND": "3",
@@ -132,9 +120,8 @@
     "BRAND": "Nike"
   },
   {
-    "ID": "0B8EF69729374F3",
     "PRODUCTNAME": "Soccer Socks",
-    "GRAPHICNAME": "Soccer Socks",
+    "GRAPHICNAME": "lottoSoccerSocks.png",
     "COST": "9.99",
     "MSRP": "14.99",
     "QTYHAND": "11",
@@ -143,9 +130,8 @@
     "BRAND": "Lotto"
   },
   {
-    "ID": "ADC45A881CA3469",
     "PRODUCTNAME": "Men's Tiro 21 Workout Shorts",
-    "GRAPHICNAME": "Workout Shorts",
+    "GRAPHICNAME": "tiro21WorkoutShorts.png",
     "COST": "26.97",
     "MSRP": "45.99",
     "QTYHAND": "9",
@@ -154,9 +140,8 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "7654198B543B419",
     "PRODUCTNAME": "Men's Tiro 21 Track Jacket",
-    "GRAPHICNAME": "Track Jacket",
+    "GRAPHICNAME": "tiro21TrackJacket.png",
     "COST": "55.97",
     "MSRP": "89.99",
     "QTYHAND": "6",
@@ -165,11 +150,10 @@
     "BRAND": "Adidas"
   },
   {
-    "ID": "5F00D31501DD446",
     "PRODUCTNAME": "Men's Over The Calf Soccer Socks",
-    "GRAPHICNAME": "Soccer Socks",
-    "COST": "9.97",
-    "MSRP": "19.99",
+    "GRAPHICNAME": "underArmourSoccerSocks.png",
+    "COST": "1.88",
+    "MSRP": "9.99",
     "QTYHAND": "13",
     "QTYORDER": "0",
     "DESC": "The Under Armour Men's Over The Calf Soccer Sock has a HeatGear® fabric that wicks sweat away from your skin to keep you cool, dry, and light.",
