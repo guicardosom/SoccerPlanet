@@ -19,7 +19,7 @@ namespace Casestudy.DAL.DomainClasses
         public string? ProductName { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         public string? GraphicName { get; set; }
 
         [Required]
