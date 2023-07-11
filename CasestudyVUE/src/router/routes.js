@@ -11,9 +11,15 @@ const routes = [
       },
       // Brand List Page
       {
-        path: "/brand",
-        name: "brand",
+        path: "/brands",
+        name: "brands",
         component: () => import("pages/BrandListPage.vue"),
+      },
+      // Cart Page
+      {
+        path: "/cart",
+        name: "cart",
+        component: () => import("pages/CartPage.vue"),
       },
     ],
   },
