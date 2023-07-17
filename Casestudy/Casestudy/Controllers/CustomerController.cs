@@ -2,6 +2,7 @@
 using Casestudy.DAL.DAO;
 using Casestudy.DAL.DomainClasses;
 using Casestudy.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -14,6 +15,7 @@ using System.Text;
 namespace Casestudy.Controllers
 {
     [ApiController]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         readonly AppDbContext? _ctx;
@@ -28,6 +30,7 @@ namespace Casestudy.Controllers
         [HttpPost]
         [Route("api/[controller]/Login")]
         [Produces("application/json")]
+        [AllowAnonymous]
         public async Task<ActionResult<CustomerHelper>> Login(CustomerHelper helper)
         {
             CustomerDAO dao = new(_ctx!);
@@ -67,6 +70,7 @@ namespace Casestudy.Controllers
         [HttpPost]
         [Route("api/[controller]/Register")]
         [Produces("application/json")]
+        [AllowAnonymous]
         public async Task<ActionResult<CustomerHelper>> Register(CustomerHelper helper)
         {
             CustomerDAO dao = new(_ctx!);
