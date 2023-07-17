@@ -12,6 +12,15 @@
               <q-item clickable v-close-popup to="brands">
                 <q-item-section>Brands</q-item-section>
               </q-item>
+              <q-item clickable v-close-popup to="register">
+                <q-item-section>Register</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup to="login">
+                <q-item-section>Login</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup to="logout">
+                <q-item-section>Logout</q-item-section>
+              </q-item>
             </q-list>
           </q-menu>
         </q-btn>
