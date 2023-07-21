@@ -174,7 +174,7 @@ export default {
     const selectProduct = async (productId) => {
       try {
         state.selectedProduct = state.products.find(
-          (item) => item.id === productId
+          (product) => product.id === productId
         );
         state.itemSelected = true;
         state.dialogStatus = "";
@@ -192,7 +192,7 @@ export default {
       if (state.cart.length > 0) {
         index = state.cart.findIndex(
           // is item already on the cart
-          (item) => item.id === state.selectedProduct.id
+          (product) => product.id === state.selectedProduct.id
         );
       }
       if (state.qty > 0) {
@@ -200,13 +200,13 @@ export default {
           ? state.cart.push({
               id: state.selectedProduct.id,
               qty: state.qty,
-              item: state.selectedProduct,
+              product: state.selectedProduct,
             })
           : (state.cart[index] = {
               // replace
               id: state.selectedProduct.id,
               qty: state.qty,
-              item: state.selectedProduct,
+              product: state.selectedProduct,
             });
         state.dialogStatus = `${state.qty} product(s) added`;
       } else {

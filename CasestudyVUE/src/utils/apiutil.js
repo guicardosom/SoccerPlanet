@@ -32,18 +32,21 @@ const poster = async (endpoint, dataToPost) => {
   } catch (error) {
     payload = error;
   }
+
   return payload;
 };
 
 const buildHeaders = () => {
   const myHeaders = new Headers();
   const user = JSON.parse(sessionStorage.getItem("customer"));
+
   if (user) {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Bearer " + user.token);
   } else {
     myHeaders.append("Content-Type", "application/json");
   }
+
   return myHeaders;
 };
 

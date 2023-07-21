@@ -20,18 +20,18 @@
         </q-item>
 
         <q-list separator>
-          <q-item v-for="product in state.cart" :key="product.id">
+          <q-item v-for="item in state.cart" :key="item.id">
             <q-item-section style="flex-grow: 3">
-              {{ product.item.productName }}
+              {{ item.product.productName }}
             </q-item-section>
             <q-item-section style="flex-grow: 1; align-items: center">
-              {{ product.qty }}
+              {{ item.qty }}
             </q-item-section>
             <q-item-section style="flex-grow: 1">
-              {{ formatCurrency(product.item.msrp) }}
+              {{ formatCurrency(item.product.msrp) }}
             </q-item-section>
             <q-item-section style="flex-grow: 1; align-items: end">
-              {{ formatCurrency(product.item.msrp * product.qty) }}
+              {{ formatCurrency(item.product.msrp * item.qty) }}
             </q-item-section>
           </q-item>
 
@@ -61,6 +61,14 @@
 
     <div class="text-center">
       <q-btn
+        icon="shopping_cart"
+        class="q-mr-sm"
+        color="primary"
+        label="Checkout"
+        :disable="state.cart.length < 1"
+        @click="saveOrder()"
+      />
+      <q-btn
         icon="delete"
         color="primary"
         label="Clear Cart"
@@ -73,6 +81,7 @@
 
 <script>
 import { reactive, onMounted } from "vue";
+import { poster } from "../utils/apiutil";
 import { formatCurrency } from "../utils/formatutils";
 
 export default {
@@ -80,8 +89,8 @@ export default {
     onMounted(() => {
       loadCart();
 
-      state.cart.forEach((product) => {
-        state.subtotal += product.item.msrp * product.qty;
+      state.cart.forEach((item) => {
+        state.subtotal += item.product.msrp * item.qty;
       });
 
       state.taxes = (state.subtotal * 13) / 100.0;
@@ -108,9 +117,29 @@ export default {
       state.status = "cart emptied";
     };
 
+    const saveOrder = async () => {
+      let customer = JSON.parse(sessionStorage.getItem("customer"));
+      let cart = JSON.parse(sessionStorage.getItem("cart"));
+      try {
+        state.status = "sending cart info to server";
+        let orderHelper = { email: customer.email, selections: cart };
+        let payload = await poster("Order", orderHelper);
+        if (payload.indexOf("not") > 0) {
+          state.status = payload;
+        } else {
+          clearCart();
+          state.status = payload;
+        }
+      } catch (err) {
+        console.log(err);
+        state.status = `Error add cart: ${err}`;
+      }
+    };
+
     return {
       state,
       clearCart,
+      saveOrder,
       formatCurrency,
     };
   },
