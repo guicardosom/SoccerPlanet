@@ -1,5 +1,6 @@
 ﻿using Casestudy.DAL.DomainClasses;
 using Casestudy.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Casestudy.DAL.DAO
 {
@@ -9,6 +10,11 @@ namespace Casestudy.DAL.DAO
         public OrderDAO(AppDbContext ctx)
         {
             _db = ctx;
+        }
+
+        public async Task<List<Order>> GetAll(int id)
+        {
+            return await _db.Orders!.Where(order => order.CustomerId == id).ToListAsync<Order>();
         }
 
         public async Task<int> AddOrder(int customerId, OrderSelectionHelper[] selections)
@@ -39,6 +45,7 @@ namespace Casestudy.DAL.DAO
                         OrderLineItem oItem = new();
                         oItem.ProductId = selection.Product!.Id;
                         oItem.OrderId = order.Id;
+                        oItem.SellingPrice = selection.Product!.MSRP;
 
                         if (selection.Qty <= selection.Product!.QtyOnHand)
                         {
@@ -54,11 +61,13 @@ namespace Casestudy.DAL.DAO
                             oItem.QtyOrdered = selection.Qty;
                             oItem.QtyBackOrdered = selection.Qty - selection.Product!.QtyOnHand;
 
-                            selection.Product!.QtyOnBackOrder = selection.Qty - selection.Product!.QtyOnHand;
-                            selection.Product!.QtyOnHand = 0;
+                            Product? prod = await _db.Products!.FindAsync(selection.Product.Id);
+                            prod!.QtyOnBackOrder = selection.Qty - selection.Product!.QtyOnHand;
+                            prod!.QtyOnHand = 0;
+
+                            await _db.SaveChangesAsync();
                         }
 
-                        oItem.SellingPrice = selection.Product!.MSRP;
 
                         await _db.OrderLineItems!.AddAsync(oItem);
                         await _db.SaveChangesAsync();
@@ -74,6 +83,33 @@ namespace Casestudy.DAL.DAO
                 }
             }
             return orderId;
+        }
+
+        public async Task<List<OrderDetailsHelper>> GetOrderDetails(int oid, string email)
+        {
+            Customer? customer = _db.Customers!.FirstOrDefault(customer => customer.Email == email);
+            List<OrderDetailsHelper> allDetails = new();
+
+            // LINQ way of doing INNER JOINS
+            var results = from o in _db.Orders
+                          join oi in _db.OrderLineItems! on o.Id equals oi.OrderId
+                          join p in _db.Products! on oi.ProductId equals p.Id
+                          where (o.CustomerId == customer!.Id && o.Id == oid)
+                          select new OrderDetailsHelper
+                          {
+                              OrderId = o.Id,
+                              CustomerId = customer!.Id,
+                              ProductId = oi.ProductId!,
+                              ProductName = p.ProductName,
+                              Cost = oi.SellingPrice,
+                              QtySold = oi.QtySold,
+                              QtyOrdered = oi.QtyOrdered,
+                              QtyBackOrdered = oi.QtyBackOrdered,
+                              OrderDate = o.OrderDate.ToString() //date will be formatted in client-side
+                          };
+
+            allDetails = await results.ToListAsync();
+            return allDetails;
         }
     }
 }
