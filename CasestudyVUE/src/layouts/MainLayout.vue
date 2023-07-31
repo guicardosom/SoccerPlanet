@@ -12,6 +12,9 @@
               <q-item clickable v-close-popup to="brands">
                 <q-item-section>Brands</q-item-section>
               </q-item>
+              <q-item clickable v-close-popup to="history">
+                <q-item-section>Order History</q-item-section>
+              </q-item>
               <q-item clickable v-close-popup to="register">
                 <q-item-section>Register</q-item-section>
               </q-item>
